@@ -13,15 +13,13 @@ class ChildComponent extends React.Component {
   handleShowHide = () => {
     this.setState({showJobs: !this.state.showJobs});
   }
+
   render() {
-    let { firstName, lastName, arrJobs } = this.props;
+    let { arrJobs } = this.props;
     let { showJobs } = this.state;
     let check = showJobs === true ? 'showJobs = true' : 'showJobs = false';
     return (
       <>
-        <div>
-          Hello Ban {firstName} - {lastName}
-        </div>
         {showJobs === false ? <div className="Show">
           <button onClick={() => this.handleShowHide()}>Show</button>
         </div>
@@ -31,7 +29,7 @@ class ChildComponent extends React.Component {
               {arrJobs.map((item, index) => {
                 return (
                   <div key={item.id}>
-                    {item.id} + {item.title} + {item.salary}
+                    {item.id} + {item.title} + {item.salary} <></><span onClick={() => this.handleOnClickDelete(item)}>x</span>
                   </div>
                 );
               })}
